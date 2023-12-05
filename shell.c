@@ -13,8 +13,9 @@ int main(void)
 	char *prompt = "$ ";
 	char *line = NULL, *delim = " \n", *line_cpy, **argv;
 	size_t len = 0;
-	pid_t child_pid;
-	int status, read;
+	/*pid_t child_pid;
+	int status, read;*/
+	int read;
 
 	while (1)
 	{
@@ -29,24 +30,24 @@ int main(void)
 			return (1);
 		}
 
-		child_pid = fork();
+		/*child_pid = fork();
 		if (child_pid == -1)
 		{
 			perror("Error:");
 			return (1);
-		}
-		if (child_pid == 0)
-		{
-			_strcpy(line_cpy, line);
-			set_arg(argv, line_cpy, delim);
+		}*/
+		/*if (child_pid == 0)
+		{*/
+		_strcpy(line_cpy, line);
+		set_arg(argv, line_cpy, delim);
 
-			exec(argv);
-			sleep(2);
+		exec(argv);
+		/*	sleep(2);
 		}
 		else
 		{
 			wait(&status);
-		}
+		}*/
 
 		free_arr(argv);
 		free(line_cpy);
